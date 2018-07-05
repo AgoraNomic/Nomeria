@@ -10,7 +10,8 @@ the other types, you can do so by adding this as a multiple
 inheritance.
 
 """
-from evennia import DefaultObject
+from evennia import DefaultObject, CmdSet
+from commands.command import Command
 
 
 class Object(DefaultObject):
@@ -161,3 +162,50 @@ class Object(DefaultObject):
 
      """
     pass
+
+
+class Ball(Object):
+    "Implements a ball that a player can kick around."
+
+    def at_object_creation(self):
+        self.cmdset.add_default(CmdSetKick, permanent=True)
+
+
+class CmdKick(Command):
+    """
+    kick object
+
+    Usage:
+        kick <obj>
+
+    Kick an object. Please do not kick other people.
+    """
+    key = "kick"
+    locks = "cmd:all()"
+
+    def func(self):
+        """Kick the object"""
+
+        location = self.caller.location
+        caller = self.caller
+
+        if self.args:
+            obj = self.caller.search(self.args.strip())
+        else:
+            caller.msg("What do you want to kick?")
+            return
+
+        if obj != self.obj:
+            caller.msg("You can't kick that.")
+            return
+
+        location.msg_contents(text="{char} kicks the ball.", from_obj=caller,
+                              exclude=caller, mapping={"char": self.caller})
+        self.caller.msg("You kick the ball.")
+        self.caller.location.msg_contents(text="The ball rolls around.",
+                                          from_obj=self.caller)
+
+
+class CmdSetKick(CmdSet):
+    def at_cmdset_creation(self):
+        self.add(CmdKick())
