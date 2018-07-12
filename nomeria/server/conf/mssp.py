@@ -17,7 +17,7 @@ MSSPTable = {
 
     # Required fieldss
 
-    "NAME": "Evennia",
+    "NAME": "Nomeria",
 
     # Generic
 
@@ -27,13 +27,13 @@ MSSPTable = {
     "PORT": ["4000"],  # most important port should be last in list
     "CODEBASE": "Evennia",
     "CONTACT": "",       # email for contacting the mud
-    "CREATED": "",       # year MUD was created
+    "CREATED": "2018",       # year MUD was created
     "ICON": "",       # url to icon 32x32 or larger; <32kb.
     "IP": "",       # current or new IP address
-    "LANGUAGE": "",       # name of language used, e.g. English
-    "LOCATION": "",       # full English name of server country
+    "LANGUAGE": "English",       # name of language used, e.g. English
+    "LOCATION": "United States of America",       # full English name of server country
     "MINIMUM AGE": "0",      # set to 0 if not applicable
-    "WEBSITE": "www.evennia.com",
+    "WEBSITE": "",
 
     # Categorisation
 
@@ -112,6 +112,7 @@ MSSPTable = {
     "QUEST SYSTEM": "None",  # "None", "Immortal Run", "Automated", "Integrated"
     "ROLEPLAYING": "None",  # "None", "Accepted", "Encouraged", "Enforced"
     "TRAINING SYSTEM": "None",  # "None", "Level", "Skill", "Both"
-    "WORLD ORIGINALITY": "None",  # "All Stock", "Mostly Stock", "Mostly Original", "All Original"
+    "WORLD ORIGINALITY": "Mostly Original",  # "All Stock", "Mostly Stock",
+    # "Mostly Original", "All Original"
 
 }
