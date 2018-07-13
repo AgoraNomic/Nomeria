@@ -10,8 +10,11 @@ the other types, you can do so by adding this as a multiple
 inheritance.
 
 """
-from evennia import DefaultObject, CmdSet
+from evennia import DefaultObject
+from evennia import CmdSet
+from evennia import utils
 from commands.command import Command
+from characters import Character
 
 
 class Object(DefaultObject):
@@ -164,6 +167,13 @@ class Object(DefaultObject):
     pass
 
 
+class Fountain(Object):
+    """
+    Implements the town fountain. It has the capability to have a coin tossed
+    into it.
+    """
+
+
 class Ball(Object):
     "Implements a ball that a player can kick around."
 
@@ -173,7 +183,7 @@ class Ball(Object):
 
 class CmdKick(Command):
     """
-    kick object
+    Kick an object.
 
     Usage:
         kick <obj>
@@ -195,7 +205,10 @@ class CmdKick(Command):
             caller.msg("What do you want to kick?")
             return
 
-        if obj != self.obj:
+        if utils.inherits_from(obj, Character):
+            caller.msg("Don't kick other people!")
+            return
+        elif obj != self.obj:
             caller.msg("You can't kick that.")
             return
 
@@ -206,6 +219,4 @@ class CmdKick(Command):
                                           from_obj=self.caller)
 
 
-class CmdSetKick(CmdSet):
-    def at_cmdset_creation(self):
-        self.add(CmdKick())
+CmdSetKick = CmdSet.from_cmds([CmdKick], "CmdSetKick")
