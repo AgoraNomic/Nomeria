@@ -11,6 +11,9 @@ class Fountain(Object):
     def at_object_creation(self):
         TICKER_HANDLER.add(45, self.repeat)
 
+        self.locks.add("get:false()")
+        self.db.get_err_msg = "The fountain is anchored to the ground."
+
     def repeat(self):
         """Called at regular intervals to provide motion."""
         loc = self.location
