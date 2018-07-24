@@ -15,4 +15,15 @@ class CmdGit(Command):
 
     def func(self):
         proc = Popen("git pull", shell=True, stderr=PIPE, stdout=PIPE)
-        self.caller.msg(proc.communicate())
+
+        for sec in range(1, 30):
+            if proc.poll() is not None:
+                for message in proc.communicate():
+                    self.caller.msg(message)
+                break
+
+            self.caller.msg("...")
+            yield 1
+        else:
+            proc.kill()
+            self.caller.msg('"git pull" took too long and was killed.')
