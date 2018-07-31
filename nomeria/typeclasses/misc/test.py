@@ -1,8 +1,9 @@
 from evennia import CmdSet
 from evennia import utils
-from ..characters import Character
 from commands.command import Command
 from ..objects import Object
+from ..characters import Character
+from world.quests import Quest
 
 
 class Ball(Object):
@@ -53,3 +54,18 @@ class CmdKick(Command):
 class CmdSetKick(CmdSet):
     def at_cmdset_creation(self):
         self.add(CmdKick())
+
+
+class TestQuest(Quest):
+
+    @property
+    def name(self):
+        return "Test"
+
+    @property
+    def description(self):
+        return ("Merely a test of your skills. This message is unreasonably "
+                + "long; someone might want to do something about that. :)")
+
+    def send(self, event):
+        pass

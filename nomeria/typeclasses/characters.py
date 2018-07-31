@@ -8,6 +8,8 @@ creation commands.
 
 """
 from evennia import DefaultCharacter
+from evennia.utils import lazy_property
+from world.quests.questhandler import QuestHandler
 
 
 class Character(DefaultCharacter):
@@ -30,4 +32,11 @@ class Character(DefaultCharacter):
     at_post_puppet - Echoes "AccountName has entered the game" to the room.
 
     """
-    pass
+
+    def at_object_creation(self):
+        self.db.open_quests = set()
+        self.db.closed_quests = set()
+
+    @lazy_property
+    def quests(self):
+        return QuestHandler(self)

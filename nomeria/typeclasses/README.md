@@ -10,7 +10,7 @@ characters, exits, objects, rooms, and scripts) should only contain
 the base typeclasses for each of those things, and any similarly broad
 utilities. The docstrings for the built in classes should not be removed.
 
-The sub-packages `./local` and `./global` contain those typeclasses
+The sub-packages `./local` and `./misc` contain those typeclasses
 limited to specific rooms or areas and those of more general application
 respectively. Feel free to add sub-packages within them as necessary,
 and add new sub-packages within this package when it makes sense. Other
