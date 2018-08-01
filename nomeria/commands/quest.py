@@ -17,7 +17,7 @@ class CmdQuests(Command):
             return item.name
 
         open_quests = sorted(self.caller.db.open_quests, key=name)
-        open_quests = filter(open_quests, lambda quest: not quest.hidden)
+        open_quests = (quest for quest in open_quests if not quest.hidden)
 
         closed_quests = sorted(self.caller.db.closed_quests, key=name)
 

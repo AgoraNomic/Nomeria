@@ -1,6 +1,11 @@
 import random
 from evennia import TICKER_HANDLER
-from ..objects import Object
+from typeclasses.objects import Object
+from typeclasses.rooms import Room
+
+
+class Garden(Room):
+    pass
 
 
 class Fountain(Object):

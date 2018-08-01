@@ -1,8 +1,8 @@
 from evennia import CmdSet
 from evennia import utils
 from commands.command import Command
-from ..objects import Object
-from ..characters import Character
+from typeclasses.objects import Object
+from typeclasses.characters import Character
 from world.quests import Quest
 
 
