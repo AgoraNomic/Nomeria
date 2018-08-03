@@ -7,6 +7,7 @@ class EnvScript(Script):
     def at_script_creation(self):
         self.interval = 75
         self.persistent = True
+        self.db.messages = [""]
 
     def at_repeat(self):
         if self.db.messages is not None:

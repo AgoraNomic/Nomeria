@@ -15,8 +15,7 @@ own cmdsets by inheriting from them or directly from `evennia.CmdSet`.
 """
 
 from evennia import default_cmds
-from . import override
-from . import quest
+from commands import override, quest, build
 import admin
 
 
@@ -39,6 +38,7 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         self.add(override.CmdGet)
         self.add(override.CmdHelp)
         self.add(quest.CmdQuests)
+        self.add(build.CmdEnv)
 
 
 class AccountCmdSet(default_cmds.AccountCmdSet):
