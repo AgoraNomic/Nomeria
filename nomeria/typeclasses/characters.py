@@ -40,3 +40,10 @@ class Character(DefaultCharacter):
     @lazy_property
     def quests(self):
         return QuestHandler(self)
+
+    def at_msg_receive(self, text=None, **kwargs):
+        if text and isinstance(text, tuple) and len(text) == 2:
+            opts = text[1]
+            if "type" in opts and opts["type"] == "quiet":
+                return self.idle_time <= 3 * 60
+        return True

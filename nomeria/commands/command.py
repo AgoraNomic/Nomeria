@@ -6,7 +6,6 @@ Commands describe the input the account can do to the game.
 """
 
 from evennia.contrib.unixcommand import UnixCommand
-from evennia.commands.command import Command as BaseCommand
 
 
 class Command(UnixCommand):
