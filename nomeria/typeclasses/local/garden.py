@@ -1,13 +1,13 @@
 from evennia import create_script
 from typeclasses.objects import Object
 from typeclasses.rooms import Room
-from typeclasses.misc.messenger import MessengerScript
+from typeclasses.misc.env import EnvScript
 
 
 class Garden(Room):
 
     def at_object_creation(self):
-        script = create_script(MessengerScript, "Local messenger", obj=self)
+        script = create_script(EnvScript, "Local messenger", obj=self)
         script.db.messages = (["The fountain burbles softly."]
                               + ["The wind blows through the trees and bushes."]
                               + ["Birds chirp from the tree tops above"]

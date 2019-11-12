@@ -2,7 +2,7 @@ version: '2'
 
 services:
   evennia:
-    image: bookofportals/nomeria
+    image: bookofportals/nomeria:latest
     user: "501:"
     stdin_open: true
     tty: true

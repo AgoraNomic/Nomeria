@@ -3,9 +3,7 @@ import evennia
 from evennia.utils import lazy_property
 
 
-class Quest(object):
-    __metaclass__ = ABCMeta
-
+class Quest(object, metaclass=ABCMeta):
     def __init__(self, player):
         self._player_ref = player.dbref
 
