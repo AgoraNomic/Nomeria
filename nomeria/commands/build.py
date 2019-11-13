@@ -1,10 +1,10 @@
 from evennia import search_script, create_script
 from evennia.utils.eveditor import EvEditor
-from commands.command import Command
+from commands.command import UnixCommand
 from typeclasses.misc.env import EnvScript
 
 
-class CmdEnv(Command):
+class CmdEnv(UnixCommand):
     """Manage an EnvScript."""
 
     key = "@env"
