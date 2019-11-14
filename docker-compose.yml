@@ -3,7 +3,7 @@ version: '2'
 services:
   evennia:
     image: bookofportals/nomeria:latest
-    user: "501:"
+    user: "1001:"
     stdin_open: true
     tty: true
     ports:
