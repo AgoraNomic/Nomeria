@@ -11,4 +11,3 @@ services:
       - "4000:4000"
     volumes:
       - ./nomeria:/usr/src/game/nomeria
-      - ./ssh:/etc/ssh
