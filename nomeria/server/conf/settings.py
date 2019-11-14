@@ -34,6 +34,9 @@ from evennia.settings_default import *
 # This is the name of your game. Make it catchy!
 SERVERNAME = "Nomeria"
 
+# Allow these hosts to serve; protects security, see Django docs
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'agora.ddns.net', '.agoranomic.org']
+
 # Server ports. If enabled and marked as "visible", the port
 # should be visible to the outside world on a production server.
 # Note that there are many more options available beyond these.
@@ -48,6 +51,7 @@ WEBSERVER_PORTS = [(4001, 4002)]
 SSL_ENABLED = False
 SSL_PORTS = [4003]
 # SSH client ports. Requires crypto lib. Visible.
+# Overridden in secret_settings.py
 SSH_ENABLED = False
 SSH_PORTS = [4004]
 # Websocket-client port. Visible.
